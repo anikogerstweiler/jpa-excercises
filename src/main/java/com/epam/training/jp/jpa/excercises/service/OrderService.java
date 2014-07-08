@@ -3,9 +3,12 @@ package com.epam.training.jp.jpa.excercises.service;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManager;
 
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.epam.training.jp.jpa.excercises.dao.AddressDao;
 import com.epam.training.jp.jpa.excercises.dao.FoodOrderDao;
@@ -38,23 +41,24 @@ public class OrderService {
 
 	@Transactional(readOnly = true)
 	public List<Menu> getActualMenus() {
-		//TODO: implement
-		throw new UnsupportedOperationException();
-
+		return menuDao.getActualMenus();
 	}
 
 	public Food findFoodById(int foodId) {
-		//TODO: implement
-		throw new UnsupportedOperationException();
-
+		return menuDao.findFoodById(foodId);
 	}
 	
 	@Transactional
 	public int submitOrder(ShoppingCart shopingCart){
-		//TODO: implement, save all the related data
-		throw new UnsupportedOperationException();
-
+		TransactionStatus status = txManager.getTransaction(new DefaultTransactionDefinition());
 		
+		FoodOrder order = shopingCart.build();
+		
+		foodOrderDao.save(order);
+		
+		txManager.commit(status);
+		
+		return order.getId();
 	}
 	
 
