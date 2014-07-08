@@ -15,7 +15,7 @@ public class JpaMenuDao extends GenericJpaDao implements MenuDao {
 	@Override
 	public List<Menu> getActualMenus() {
 		final Date today = new Date();
-		final String query = "Select m from Menu m where fromDate < :from and toDate > :to";
+		final String query = "Select m from Menu m where fromDate >= :from and toDate <= :to";
 		
 		return entityManager.createQuery(query).setParameter("from", today)
 				.setParameter("to", today).getResultList();
