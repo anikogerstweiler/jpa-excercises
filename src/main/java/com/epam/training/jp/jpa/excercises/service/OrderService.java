@@ -27,10 +27,6 @@ public class OrderService {
 	private final AddressDao addressDao;
 	private final OrderItemDao orderItemDao;
 	
-	@Resource
-	private PlatformTransactionManager txManager;
-	
-	
 	public OrderService(MenuDao menuDao, FoodOrderDao foodOrderDao, AddressDao addressDao, OrderItemDao orderItemDao) {
 		super();
 		this.menuDao = menuDao;
@@ -50,22 +46,10 @@ public class OrderService {
 	
 	@Transactional
 	public int submitOrder(ShoppingCart shopingCart){
-		TransactionStatus status = txManager.getTransaction(new DefaultTransactionDefinition());
-		
 		FoodOrder order = shopingCart.build();
 		
 		foodOrderDao.save(order);
 		
-		txManager.commit(status);
-		
 		return order.getId();
 	}
-	
-
-	
-	
-	
-
-	
-	
 }
