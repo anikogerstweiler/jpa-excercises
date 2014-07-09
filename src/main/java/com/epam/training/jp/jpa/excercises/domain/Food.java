@@ -1,15 +1,16 @@
 package com.epam.training.jp.jpa.excercises.domain;
 
+import static javax.persistence.GenerationType.AUTO;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Food {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = AUTO)
 	private int id;
 	
 	private String name;
@@ -20,7 +21,6 @@ public class Food {
 	
 	private boolean isVegan;
 	
-	// methods to compile project
 	public String getName() {	
 		return this.name;
 	}

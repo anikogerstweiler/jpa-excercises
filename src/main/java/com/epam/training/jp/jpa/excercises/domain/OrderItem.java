@@ -1,10 +1,10 @@
 package com.epam.training.jp.jpa.excercises.domain;
 
 import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.GenerationType.AUTO;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 public class OrderItem {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = AUTO)
 	private int id;
 	
 	private int quantity;
@@ -27,7 +27,6 @@ public class OrderItem {
 		this.quantity = integer;
 	}
 
-	// methods to compile project
 	public Food getFood() {
 		return food;
 	}

@@ -1,32 +1,33 @@
 package com.epam.training.jp.jpa.excercises.domain;
 
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.FetchType.EAGER;
+import static javax.persistence.GenerationType.AUTO;
+import static javax.persistence.TemporalType.DATE;
+
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Menu {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = AUTO)
 	private int id;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(DATE)
 	private Date fromDate;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(DATE)
 	private Date toDate;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@OneToMany(fetch = EAGER, cascade = PERSIST)
 	private List<Food> foods;
 	
 	public Menu() {	}

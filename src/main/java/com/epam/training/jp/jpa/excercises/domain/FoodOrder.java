@@ -1,11 +1,11 @@
 package com.epam.training.jp.jpa.excercises.domain;
 
 import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.EnumType.STRING;
 
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +28,7 @@ public class FoodOrder {
 	@OneToMany(cascade = PERSIST)
 	private List<OrderItem> orderItems;
 	
-	@Enumerated(value = EnumType.STRING)
+	@Enumerated(value = STRING)
 	private OrderState state;
 	
 	public FoodOrder() { }

@@ -2,13 +2,7 @@ package com.epam.training.jp.jpa.excercises.service;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-import javax.persistence.EntityManager;
-
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import com.epam.training.jp.jpa.excercises.dao.AddressDao;
 import com.epam.training.jp.jpa.excercises.dao.FoodOrderDao;
@@ -17,7 +11,6 @@ import com.epam.training.jp.jpa.excercises.dao.OrderItemDao;
 import com.epam.training.jp.jpa.excercises.domain.Food;
 import com.epam.training.jp.jpa.excercises.domain.FoodOrder;
 import com.epam.training.jp.jpa.excercises.domain.Menu;
-import com.epam.training.jp.jpa.excercises.domain.OrderItem;
 import com.epam.training.jp.jpa.excercises.dto.ShoppingCart;
 
 public class OrderService {
